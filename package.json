@@ -1,0 +1,20 @@
+{
+  "name": "todoterminal",
+  "version": "1.0.0",
+  "description": "Criar uma aplicação de To-Do List que utilize a estrutura de dados de fila para gerenciar tarefas.\r ## *Descrição:* \r Você deve implementar um sistema de To-Do List que permite adicionar, remover e listar tarefas utilizando os conceitos de orientação a objetos. As tarefas devem ser gerenciadas em uma fila, onde a ordem de adição define a ordem de execução (FIFO - First In, First Out).\r ## *Requisitos:*\r ### 1. *Classe Tarefa:*\r    - Atributos: descrição, prioridade (opcional), status (pendente/concluída).\r    - Métodos: um construtor, método para exibir informações da tarefa.\r ### 2. *Classe FilaDeTarefas:*\r    - Atributos: uma lista que armazena as tarefas.\r    - Métodos:\r      - adicionar_tarefa(tarefa): adiciona uma nova tarefa à fila.\r      - remover_tarefa(): remove e retorna a tarefa que está no início da fila.\r      - listar_tarefas(): exibe todas as tarefas na fila.\r      - tarefa_pronta(): marca a tarefa no início da fila como concluída.\r ### 3. *Interação com o Usuário:*\r    - Um menu que permite ao usuário adicionar, remover, listar tarefas e marcar tarefas como concluídas.\r ## *Entrega:* \r O código deve ser enviado para seu GitHub pessoal em um único arquivo e acompanhado de um readme.md de uso explicando como executar a aplicação.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^22.6.1",
+    "@types/readline-sync": "^1.4.8",
+    "readline-sync": "^1.4.10"
+  }
+}
