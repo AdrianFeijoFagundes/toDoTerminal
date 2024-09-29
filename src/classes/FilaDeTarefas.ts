@@ -19,7 +19,7 @@ export class FilaDeTarefas {
 
     public listar_tarefas(){
         for (let tarefa of this.lista) {
-            console.log(`              ${tarefa.toString()}`)
+            console.log(`             ${tarefa.toString()}`)
         }
     }
 
@@ -32,13 +32,6 @@ export class FilaDeTarefas {
             return this.lista[0];
         }
     }
-
-    // substitui o "tarefa_pronta" pelo método "mudarStatus"
-    public mudarStatus(): string | undefined {    
-        this.primeiro()?.getStatus() == "Pendente" ? this.primeiro()?.setStatus("Concluído") : this.primeiro()?.setStatus("Pendente");
-        return this.primeiro()?.getStatus();
-    }
-
     //metodo isEmpty
     public estaVazia(): boolean {
         return this.lista.length === 0    

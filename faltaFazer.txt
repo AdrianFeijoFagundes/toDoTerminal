@@ -1,3 +1,0 @@
-terminar menu
-
-adicionar listagem para pendentes e concluídas

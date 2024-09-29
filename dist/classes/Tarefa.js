@@ -7,11 +7,13 @@ class Tarefa {
         this.status = status;
     }
     getDescricao() { return this.descricao; }
-    getStatus() { return this.status; }
     setDescricao(descricao) { this.descricao = descricao; }
-    setStatus(status) { this.status = status; }
+    // substitui o "tarefa_pronta" pelo método "mudarStatus"
+    mudarStatus() {
+        this.status == "Pendente" ? this.status = "Concluído" : this.status = "Pendente";
+    }
     toString() {
-        return `   ${this.descricao.padEnd(25)}     |      ${this.status.padEnd(10)}`;
+        return `   ${this.descricao.padEnd(40)}     | ${this.status.padEnd(10)}`;
     }
 }
 exports.Tarefa = Tarefa;

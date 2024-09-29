@@ -5,12 +5,14 @@ export class Tarefa {
     ){}
 
     public getDescricao(): string                       { return this.descricao         }
-    public getStatus(): string                          { return this.status            }
-
     public setDescricao(descricao: string): void        { this.descricao = descricao    }
-    public setStatus(status: string): void              { this.status = status          }
+   
+    // substitui o "tarefa_pronta" pelo método "mudarStatus"
+    public mudarStatus(): void {    
+        this.status == "Pendente" ? this.status = "Concluído" : this.status = "Pendente" ;  
+    }
 
     public toString(): string {
-        return `   ${this.descricao.padEnd(40)}     | ${this.status.padEnd(10)}`
+        return `   ${this.descricao.padEnd(30)}     | ${this.status.padEnd(10)}`
     }  
 }

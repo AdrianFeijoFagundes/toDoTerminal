@@ -26,32 +26,64 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const FilaDeTarefas_1 = require("./classes/FilaDeTarefas");
 const Tarefa_1 = require("./classes/Tarefa");
 const ask = __importStar(require("readline-sync"));
-function main(fila) {
+function main(filaPrincipal, filaConcluidas) {
+    var _a;
     while (true) {
-        let checkEmpty = fila.estaVazia() ? "Yes" : "No";
+        const primeiraTarefa = ((_a = filaPrincipal.primeiro()) === null || _a === void 0 ? void 0 : _a.getDescricao()) || 'Nenhuma tarefa cadastrada';
         console.clear();
-        fila.listar_tarefas();
         console.log(`
                 -----------------------------------------------
-                Quantidade total de tarefas:  ${fila.tamanho()}  
+                                LISTA DE TAREFAS
+                -----------------------------------------------
+                Primeira tarefa:
+                    ${primeiraTarefa}
+                -----------------------------------------------
+                Quantidade total de tarefas:  ${filaPrincipal.tamanho()}  
                 - 1. Adicionar     
                 - 2. Concluir Primeira Tarefa
-                - . Sair
+                - 3. Listar Tarefas Pendentes
+                - 4. Listar Tarefas Concluídas
+                - 5. Sair
                 -----------------------------------------------
         `);
-        let user = ask.questionInt('Qual desejas? ');
+        let user = ask.questionInt('Deseja escolher qual opcao? ');
         switch (user) {
             case 1:
-                fila.adicionar_tarefa(new Tarefa_1.Tarefa(ask.question("Qual a descrição da tarefa")));
-                ask.question("...");
+                filaPrincipal.adicionar_tarefa(new Tarefa_1.Tarefa(ask.question("Qual a descricao da tarefa: ")));
                 break;
             case 2:
+                let tarefaConcluida = filaPrincipal.remover_tarefa();
+                if (tarefaConcluida !== undefined) {
+                    tarefaConcluida.mudarStatus();
+                    filaConcluidas.adicionar_tarefa(tarefaConcluida);
+                }
                 ask.question(`...`);
                 break;
             case 3:
+                console.clear();
+                console.log(`
+                -----------------------------------------------
+                                TAREFAS PENDENTES
+                -----------------------------------------------
+                `);
+                !filaPrincipal.estaVazia() ? filaPrincipal.listar_tarefas() : console.log('Lista de tarefas pendentes vazia');
+                ask.question(`...`);
+                break;
+            case 4:
+                console.clear();
+                console.log(`
+                -----------------------------------------------
+                                TAREFAS CONCLUIDAS
+                -----------------------------------------------
+                `);
+                !filaConcluidas.estaVazia() ? filaConcluidas.listar_tarefas() : console.log('Lista de tarefas concluídas vazia');
+                ask.question(`...`);
+                break;
+            case 5:
                 return;
         }
     }
 }
 let filaDeTarefas = new FilaDeTarefas_1.FilaDeTarefas();
-main(filaDeTarefas);
+let filaConcluídas = new FilaDeTarefas_1.FilaDeTarefas();
+main(filaDeTarefas, filaConcluídas);
