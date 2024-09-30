@@ -5,7 +5,7 @@ export class FilaDeTarefas {
     
     public adicionar_tarefa(tarefa: Tarefa): void{
         this.lista.push(tarefa);
-    }
+    };
 
 
     public remover_tarefa(): Tarefa | undefined{
@@ -15,13 +15,13 @@ export class FilaDeTarefas {
         } else {
             return this.lista.shift();
         }
-    }
+    };
 
     public listar_tarefas(){
         for (let tarefa of this.lista) {
             console.log(`             ${tarefa.toString()}`)
-        }
-    }
+        };
+    };
 
     //retornar o primeiro elemento
     public primeiro(): Tarefa | undefined{
@@ -30,15 +30,15 @@ export class FilaDeTarefas {
             return undefined;
         } else {
             return this.lista[0];
-        }
-    }
+        };
+    };
     //metodo isEmpty
     public estaVazia(): boolean {
-        return this.lista.length === 0    
-    }
+        return this.lista.length === 0;   
+    };
     
     //metodo size
     public tamanho(): number{
-        return this.lista.length
-    }
+        return this.lista.length;
+    };
 }

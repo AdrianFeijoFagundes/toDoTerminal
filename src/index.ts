@@ -7,8 +7,8 @@ import * as ask from "readline-sync";
 
 function main(filaPrincipal: FilaDeTarefas, filaConcluidas: FilaDeTarefas): void {
     while(true) {
-        const primeiraTarefa = filaPrincipal.primeiro()?.getDescricao() || 'Nenhuma tarefa cadastrada'
-        console.clear()
+        const primeiraTarefa = filaPrincipal.primeiro()?.getDescricao() || 'Nenhuma tarefa cadastrada';
+        console.clear();
         console.log(`
                 -----------------------------------------------
                                 LISTA DE TAREFAS
@@ -23,8 +23,8 @@ function main(filaPrincipal: FilaDeTarefas, filaConcluidas: FilaDeTarefas): void
                 - 4. Listar Tarefas Concluídas
                 - 5. Sair
                 -----------------------------------------------
-        `)
-        let user = ask.questionInt('Deseja escolher qual opcao? ', {limit: [1, 2, 3, 4, 5], limitMessage: 'Digite 1, 2, 3, 4 ou 5.'})
+        `);
+        let user = ask.questionInt('Deseja escolher qual opcao? ', {limit: [1, 2, 3, 4, 5], limitMessage: 'Digite 1, 2, 3, 4 ou 5.'});
  
         switch(user) {
             case 1:
@@ -32,7 +32,7 @@ function main(filaPrincipal: FilaDeTarefas, filaConcluidas: FilaDeTarefas): void
                     new Tarefa(
                         ask.question("Qual a descricao da tarefa: ")
                     )
-                )
+                );
                 break
             case 2:  
                 let tarefaConcluida = filaPrincipal.remover_tarefa()
@@ -48,8 +48,11 @@ function main(filaPrincipal: FilaDeTarefas, filaConcluidas: FilaDeTarefas): void
                 -----------------------------------------------
                                 TAREFAS PENDENTES
                 -----------------------------------------------
-                `)
-                !filaPrincipal.estaVazia()? filaPrincipal.listar_tarefas() : console.log('Lista de tarefas pendentes vazia')
+                `);
+                (!filaPrincipal.estaVazia()) ? 
+                    filaPrincipal.listar_tarefas() : 
+                    console.log('Lista de tarefas pendentes vazia');
+
                 ask.question('Pressione a tecla enter para prosseguir...', { hideEchoBack: true, mask: '' });
                 break
             case 4:
@@ -58,8 +61,11 @@ function main(filaPrincipal: FilaDeTarefas, filaConcluidas: FilaDeTarefas): void
                 -----------------------------------------------
                                 TAREFAS CONCLUIDAS
                 -----------------------------------------------
-                `)
-                !filaConcluidas.estaVazia()? filaConcluidas.listar_tarefas() : console.log('Lista de tarefas concluídas vazia')
+                `);
+                (!filaConcluidas.estaVazia()) ?
+                    filaConcluidas.listar_tarefas()
+                    : console.log('Lista de tarefas concluídas vazia');
+                
                 ask.question('Pressione a tecla enter para prosseguir...', { hideEchoBack: true, mask: '' });
                 break
             case 5: 
